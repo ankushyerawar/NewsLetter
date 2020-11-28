@@ -55,17 +55,6 @@
 32-->E:\Android\NewsLetter\app\src\main\AndroidManifest.xml:23:27-74
 33            </intent-filter>
 34        </activity>
-35
-36        <provider
-36-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\uday.rajeshirke\.gradle\caches\transforms-2\files-2.1\b2bf327634e85a9ce0ca81c7f5ee6b66\lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-37            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-37-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\uday.rajeshirke\.gradle\caches\transforms-2\files-2.1\b2bf327634e85a9ce0ca81c7f5ee6b66\lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-38            android:authorities="com.ankushyerawar.newsletter.lifecycle-process"
-38-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\uday.rajeshirke\.gradle\caches\transforms-2\files-2.1\b2bf327634e85a9ce0ca81c7f5ee6b66\lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-39            android:exported="false"
-39-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\uday.rajeshirke\.gradle\caches\transforms-2\files-2.1\b2bf327634e85a9ce0ca81c7f5ee6b66\lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-40            android:multiprocess="true" />
-40-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\uday.rajeshirke\.gradle\caches\transforms-2\files-2.1\b2bf327634e85a9ce0ca81c7f5ee6b66\lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-41    </application>
-42
-43</manifest>
+35    </application>
+36
+37</manifest>
