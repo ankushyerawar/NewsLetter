@@ -23,7 +23,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.ankushyerawar.newsletter.MainActivity"
+            android:name="com.ankushyerawar.newsletter.ui.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

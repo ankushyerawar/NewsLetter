@@ -37,8 +37,8 @@
 24-->E:\Android\NewsLetter\app\src\main\AndroidManifest.xml:15:9-40
 25        <activity
 25-->E:\Android\NewsLetter\app\src\main\AndroidManifest.xml:16:9-25:20
-26            android:name="com.ankushyerawar.newsletter.MainActivity"
-26-->E:\Android\NewsLetter\app\src\main\AndroidManifest.xml:17:13-41
+26            android:name="com.ankushyerawar.newsletter.ui.activity.MainActivity"
+26-->E:\Android\NewsLetter\app\src\main\AndroidManifest.xml:17:13-53
 27            android:label="@string/app_name" >
 27-->E:\Android\NewsLetter\app\src\main\AndroidManifest.xml:18:13-45
 28            <intent-filter>
