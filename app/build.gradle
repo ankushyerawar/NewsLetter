@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 ext.versionMajor = 0
 ext.versionMinor = 1
@@ -11,7 +12,6 @@ ext.minimumSdkVersion = 23
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.ankushyerawar.newsletter"
         minSdkVersion project.ext.minimumSdkVersion
@@ -53,7 +53,7 @@ private String generateVersionName() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Android
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -78,7 +78,14 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
 
     //Testing
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Open Source
+    implementation 'com.treebo:internetavailabilitychecker:1.0.2'
+
+    //Local Broadcast - Network
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }

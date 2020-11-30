@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_splash">
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ankushyerawar.newsletter.ui.home.HomeFragment"
+        android:name="com.ankushyerawar.newsletter.ui.fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
@@ -22,4 +22,26 @@
         android:name="com.ankushyerawar.newsletter.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="com.ankushyerawar.newsletter.ui.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_navigation_splash_to_navigation_launch"
+            app:destination="@id/navigation_launch"
+            app:popUpTo="@+id/navigation_splash"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_launch"
+        android:name="com.ankushyerawar.newsletter.ui.fragment.LaunchFragment"
+        android:label="fragment_launch"
+        tools:layout="@layout/fragment_launch" >
+        <action
+            android:id="@+id/action_navigation_launch_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@+id/navigation_launch"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

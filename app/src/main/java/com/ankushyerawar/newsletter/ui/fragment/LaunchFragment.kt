@@ -1,0 +1,34 @@
+package com.ankushyerawar.newsletter.ui.fragment
+
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.ankushyerawar.newsletter.R
+import kotlinx.android.synthetic.main.fragment_launch.*
+
+/**
+ * A simple [Fragment] subclass.
+ */
+class LaunchFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_launch, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btn_onNext.setOnClickListener {
+            Navigation.findNavController(view).navigate(LaunchFragmentDirections.actionNavigationLaunchToNavigationHome())
+        }
+    }
+
+
+}
