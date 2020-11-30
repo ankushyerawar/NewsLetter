@@ -13,10 +13,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ankushyerawar.newsletter.R
+import com.ankushyerawar.newsletter.ui.dashboard.DashboardFragment
 import com.ankushyerawar.newsletter.ui.fragment.HomeFragment
+import com.ankushyerawar.newsletter.ui.notifications.NotificationsFragment
 import com.ankushyerawar.newsletter.utils.BottomNavigationViewIndicator
 import com.ankushyerawar.newsletter.utils.ListenableBottomNavigationView
 
@@ -46,10 +47,16 @@ class MainActivity : AppCompatActivity() {
         setUpNav()
     }
 
+    //Back Stack Handling
     override fun onBackPressed() {
         val currentFragment = mNavHostFragment.childFragmentManager.fragments[0]
+
+        //if the current fragment is Home fragment finish the Activity
         if (currentFragment is HomeFragment) {
             finish()
+        } else if (currentFragment is DashboardFragment ||
+            currentFragment is NotificationsFragment) {
+            mNavController.popBackStack(R.id.navigation_home, false)
         } else {
             super.onBackPressed()
         }
@@ -70,8 +77,9 @@ class MainActivity : AppCompatActivity() {
         )
 
         mMainToolbar.setupWithNavController(mNavController, appBarConfiguration)
-        setupActionBarWithNavController(mNavController, appBarConfiguration)
         mNavView.setupWithNavController(mNavController)
+
+        //mMainToolbar.logo = resources.getDrawable(R.drawable.ic_newspaper, null)
 
         onFragmentToolbarChanged()
     }
