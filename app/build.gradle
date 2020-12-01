@@ -24,6 +24,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_KEY", '"aae2ee1f29474347834a4160607b6d2f"'
+        }
+        debug {
+            buildConfigField "String", "API_KEY", '"aae2ee1f29474347834a4160607b6d2f"'
         }
     }
     compileOptions {
@@ -72,6 +76,16 @@ dependencies {
     //Lifecycle - ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
+    //Retrofit - Http Client
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+
+    //Logging Interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.8.1'
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     //Kotlin Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'

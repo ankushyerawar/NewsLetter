@@ -16,7 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.ankushyerawar.newsletter.R
 import com.ankushyerawar.newsletter.ui.dashboard.DashboardFragment
-import com.ankushyerawar.newsletter.ui.fragment.HomeFragment
+import com.ankushyerawar.newsletter.ui.fragment.HeadlineFragment
 import com.ankushyerawar.newsletter.ui.notifications.NotificationsFragment
 import com.ankushyerawar.newsletter.utils.BottomNavigationViewIndicator
 import com.ankushyerawar.newsletter.utils.ListenableBottomNavigationView
@@ -52,11 +52,11 @@ class MainActivity : AppCompatActivity() {
         val currentFragment = mNavHostFragment.childFragmentManager.fragments[0]
 
         //if the current fragment is Home fragment finish the Activity
-        if (currentFragment is HomeFragment) {
+        if (currentFragment is HeadlineFragment) {
             finish()
         } else if (currentFragment is DashboardFragment ||
             currentFragment is NotificationsFragment) {
-            mNavController.popBackStack(R.id.navigation_home, false)
+            mNavController.popBackStack(R.id.navigation_headline, false)
         } else {
             super.onBackPressed()
         }
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home,
+                R.id.navigation_headline,
                 R.id.navigation_dashboard,
                 R.id.navigation_notifications
             )
@@ -86,12 +86,10 @@ class MainActivity : AppCompatActivity() {
     private fun onFragmentToolbarChanged() {
         mNavController.addOnDestinationChangedListener { _, destination, _ ->
 
-            mNavController.getBackStackEntry(destination.id)
-
             when (destination.id) {
                 R.id.navigation_splash -> mMainToolbar.visibility = View.GONE
                 R.id.navigation_launch -> mMainToolbar.visibility = View.GONE
-                R.id.navigation_home -> {
+                R.id.navigation_headline -> {
                     mMainToolbar.visibility = View.VISIBLE
                     if (!isAnimated)
                         animateBottomView(mNavView)

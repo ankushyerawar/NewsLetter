@@ -23,7 +23,7 @@ class LaunchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_onNext.setOnClickListener {
-            Navigation.findNavController(view).navigate(LaunchFragmentDirections.actionNavigationLaunchToNavigationHome())
+            Navigation.findNavController(view).navigate(LaunchFragmentDirections.actionNavigationLaunchToNavigationHeadline())
         }
     }
 

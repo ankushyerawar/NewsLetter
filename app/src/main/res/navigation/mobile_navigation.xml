@@ -6,10 +6,10 @@
     app:startDestination="@+id/navigation_splash">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.ankushyerawar.newsletter.ui.fragment.HomeFragment"
+        android:id="@+id/navigation_headline"
+        android:name="com.ankushyerawar.newsletter.ui.fragment.HeadlineFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_headline" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -39,8 +39,8 @@
         android:label="fragment_launch"
         tools:layout="@layout/fragment_launch" >
         <action
-            android:id="@+id/action_navigation_launch_to_navigation_home"
-            app:destination="@id/navigation_home"
+            android:id="@+id/action_navigation_launch_to_navigation_headline"
+            app:destination="@id/navigation_headline"
             app:popUpTo="@+id/navigation_launch"
             app:popUpToInclusive="true" />
     </fragment>
