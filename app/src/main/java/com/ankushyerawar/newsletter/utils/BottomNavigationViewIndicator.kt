@@ -3,11 +3,11 @@ package com.ankushyerawar.newsletter.utils
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator.ofInt
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.os.Build.VERSION.SDK_INT
-import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -39,12 +39,19 @@ class BottomNavigationViewIndicator @JvmOverloads constructor(
             backgroundDrawable = ColorDrawable(Color.TRANSPARENT)
         } else {
             with(context.obtainStyledAttributes(attrs, BottomNavigationViewIndicator)) {
-                targetId = getResourceId(BottomNavigationViewIndicator_targetBottomNavigation, NO_ID)
-                val clipableId = getResourceId(BottomNavigationViewIndicator_clipableBackground, NO_ID)
+                targetId =
+                    getResourceId(BottomNavigationViewIndicator_targetBottomNavigation, NO_ID)
+                val clipableId =
+                    getResourceId(BottomNavigationViewIndicator_clipableBackground, NO_ID)
                 backgroundDrawable = if (clipableId != NO_ID) {
                     getDrawable(context, clipableId) ?: ColorDrawable(Color.TRANSPARENT)
                 } else {
-                    ColorDrawable(getColor(BottomNavigationViewIndicator_clipableBackground, Color.TRANSPARENT))
+                    ColorDrawable(
+                        getColor(
+                            BottomNavigationViewIndicator_clipableBackground,
+                            Color.TRANSPARENT
+                        )
+                    )
                 }
                 recycle()
             }
@@ -54,14 +61,15 @@ class BottomNavigationViewIndicator @JvmOverloads constructor(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         if (targetId == NO_ID) return attachedError("invalid target id $targetId, did you set the app:targetBottomNavigation attribute?")
-        val parentView = parent as? View ?: return attachedError("Impossible to find the view using $parent")
+        val parentView =
+            parent as? View ?: return attachedError("Impossible to find the view using $parent")
         val child = parentView.findViewById<View?>(targetId)
         if (child !is ListenableBottomNavigationView) return attachedError("Invalid view $child, the app:targetBottomNavigation has to be n ListenableBottomNavigationView")
         for (i in 0 until child.childCount) {
             val subView = child.getChildAt(i)
             if (subView is BottomNavigationMenuView) target = subView
         }
-        if (SDK_INT >= LOLLIPOP) elevation = child.elevation
+        elevation = child.elevation
         child.addOnNavigationItemSelectedListener { updateRectByIndex(it, true) }
         post { updateRectByIndex(index, false) }
     }
@@ -91,7 +99,7 @@ class BottomNavigationViewIndicator @JvmOverloads constructor(
             val end = reference.right + left
 
             backgroundDrawable.setBounds(left, top, right, bottom)
-            val newRect = Rect(start + 30, 0, end - 30, height)//20,60
+            val newRect = Rect(start + 50, 0, end - 70, height)//20,60
             if (animated) startUpdateRectAnimation(newRect) else updateRect(newRect)
         }
     }
@@ -116,13 +124,17 @@ class BottomNavigationViewIndicator @JvmOverloads constructor(
         postInvalidate()
     }
 
-    fun setSelectedIndex(index: Int){
+    fun setSelectedIndex(index: Int) {
         updateRectByIndex(index, true)
     }
 
-    @Keep fun setRectLeft(left: Int) = updateRect(rect.apply { this.left = left })
-    @Keep fun setRectRight(right: Int) = updateRect(rect.apply { this.right = right })
-    @Keep fun setRectTop(top: Int) = updateRect(rect.apply { this.top = top })
-    @Keep fun setRectBottom(bottom: Int) = updateRect(rect.apply { this.bottom = bottom })
+    @Keep
+    fun setRectLeft(left: Int) = updateRect(rect.apply { this.left = left })
+    @Keep
+    fun setRectRight(right: Int) = updateRect(rect.apply { this.right = right })
+    @Keep
+    fun setRectTop(top: Int) = updateRect(rect.apply { this.top = top })
+    @Keep
+    fun setRectBottom(bottom: Int) = updateRect(rect.apply { this.bottom = bottom })
 
 }
