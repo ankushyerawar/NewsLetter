@@ -79,14 +79,14 @@ class MainActivity : AppCompatActivity() {
         mMainToolbar.setupWithNavController(mNavController, appBarConfiguration)
         mNavView.setupWithNavController(mNavController)
 
-        //mMainToolbar.logo = resources.getDrawable(R.drawable.ic_newspaper, null)
-
         onFragmentToolbarChanged()
     }
 
     //Handling Of Toolbar Changes
     private fun onFragmentToolbarChanged() {
         mNavController.addOnDestinationChangedListener { _, destination, _ ->
+
+            mNavController.getBackStackEntry(destination.id)
 
             when (destination.id) {
                 R.id.navigation_splash -> mMainToolbar.visibility = View.GONE

@@ -10,9 +10,6 @@ import androidx.navigation.Navigation
 import com.ankushyerawar.newsletter.R
 import kotlinx.android.synthetic.main.fragment_launch.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class LaunchFragment : Fragment() {
 
     override fun onCreateView(

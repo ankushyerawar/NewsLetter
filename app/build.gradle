@@ -85,7 +85,4 @@ dependencies {
 
     //Open Source
     implementation 'com.treebo:internetavailabilitychecker:1.0.2'
-
-    //Local Broadcast - Network
-    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }
