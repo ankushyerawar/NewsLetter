@@ -23,18 +23,16 @@ class BaseApp : Application(), InternetConnectivityListener {
 
     //----------------------------------------------------------------------------------------------
 
-    fun getPreferences(): SharedPreferences {
-        return this.getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE)
-    }
+    val preferences: SharedPreferences
+    get() {return this.getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE)}
 
-    fun getRepository(): NewsRepository {
-        return NewsRepository.getInstance(getPreferences())
-    }
+    val repository: NewsRepository
+    get() {return NewsRepository.getInstance(preferences)}
 
     //----------------------------------------------------------------------------------------------
 
     override fun onInternetConnectivityChanged(isConnected: Boolean) {
-        SharedPreferenceHelper.setBoolean(getPreferences(), AppConstants.INTERNET, isConnected)
+        SharedPreferenceHelper.setBoolean(preferences, AppConstants.INTERNET, isConnected)
     }
 
     override fun onTerminate() {
