@@ -34,10 +34,6 @@ class LaunchFragment : Fragment() {
 
         //If this is the first time a User is using the app show him splash screen
         mViewModel.showSplashFragment = true
-
-        btn_onNext.setOnClickListener {
-            Navigation.findNavController(view).navigate(LaunchFragmentDirections.actionNavigationLaunchToNavigationHeadline())
-        }
     }
 
 

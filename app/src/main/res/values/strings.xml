@@ -4,4 +4,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    //Splash Screen
+    <string name="title_header_one">Welcome to NewsLetter</string>
+    <string name="title_header_two">Stay Connected</string>
+    <string name="title_header_three">Share with Everyone</string>
+    <string name="title_desc_one">Stay up-to-date with news from all around the world. \n More than 50+ verified sources.</string>
+    <string name="title_desc_two">Stay connected with the world. \n Know what\'\s happening around you.</string>
+    <string name="title_desc_three">Share the latest news, trends and much more\nwith family and friends.</string>
+
+
 </resources>
