@@ -8,10 +8,10 @@
     android:background="@color/colorPrimary"
     tools:context=".ui.fragment.LaunchFragment">
 
-    <TextView
+    <com.ankushyerawar.newsletter.utils.TypeWriter
+        android:id="@+id/title_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
         android:textColor="#ffffff"
         android:textSize="32sp"
         android:layout_marginTop="80dp"
@@ -19,6 +19,6 @@
         android:drawablePadding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

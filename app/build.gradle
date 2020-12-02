@@ -99,6 +99,6 @@ dependencies {
 
     //Open Source
     implementation 'com.treebo:internetavailabilitychecker:1.0.2'
-    implementation "com.airbnb.android:lottie:3.4.0"
+    implementation 'com.airbnb.android:lottie:3.4.0'
 
 }
