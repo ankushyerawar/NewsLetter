@@ -8,19 +8,19 @@
     <fragment
         android:id="@+id/navigation_headline"
         android:name="com.ankushyerawar.newsletter.ui.fragment.HeadlineFragment"
-        android:label="@string/title_home"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_headline" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.ankushyerawar.newsletter.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.ankushyerawar.newsletter.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_splash"

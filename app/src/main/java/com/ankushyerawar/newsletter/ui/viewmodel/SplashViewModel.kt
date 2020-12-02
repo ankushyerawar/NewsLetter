@@ -6,11 +6,20 @@ import com.ankushyerawar.newsletter.application.BaseApp
 import com.ankushyerawar.newsletter.utils.AppConstants
 import com.ankushyerawar.newsletter.utils.SharedPreferenceHelper
 
-class NewsViewModel(application: Application) : AndroidViewModel(application) {
+class SplashViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val mNewsRepository = (application as (BaseApp)).repository
     private val mSharedPreferences = (application as (BaseApp)).preferences
 
     val isInternetAvailable: Boolean
         get() { return SharedPreferenceHelper.getBoolean(mSharedPreferences, AppConstants.INTERNET, false)}
+
+    var showSplashFragment: Boolean
+        set(value) {
+            SharedPreferenceHelper.setBoolean(mSharedPreferences, AppConstants.SPLASH_SCREEN, value)
+        }
+        get() = SharedPreferenceHelper.getBoolean(
+            mSharedPreferences,
+            AppConstants.SPLASH_SCREEN,
+            false
+        )
 }
