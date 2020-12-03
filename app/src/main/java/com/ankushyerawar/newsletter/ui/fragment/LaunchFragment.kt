@@ -10,13 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.ankushyerawar.newsletter.R
 import com.ankushyerawar.newsletter.ui.viewmodel.SplashViewModel
-import com.ankushyerawar.newsletter.utils.TypeWriter
+import kotlinx.android.synthetic.main.fragment_launch.*
 
 class LaunchFragment : Fragment() {
 
     private val mViewModel: SplashViewModel by viewModels()
-
-    private lateinit var mTextView: TypeWriter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,11 +36,9 @@ class LaunchFragment : Fragment() {
         //If this is the first time a User is using the app show him splash screen
         mViewModel.showSplashFragment = true
 
-        mTextView = view.findViewById(R.id.title_label)
-
         //Animate TextView
-        mTextView.setCharacterDelay(150)
-        mTextView.animateText("News Letter")
+        title_label.setCharacterDelay(150)
+        title_label.animateText(resources.getString(R.string.app_name))
 
         val handler = Handler()
         handler.postDelayed({
