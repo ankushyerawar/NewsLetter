@@ -30,6 +30,9 @@ android {
             buildConfigField "String", "API_KEY", '"aae2ee1f29474347834a4160607b6d2f"'
         }
     }
+    dataBinding {
+        enabled true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
