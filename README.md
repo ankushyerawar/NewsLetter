@@ -1,2 +1,2 @@
 # NewsLetter
-News App Built with kotlin!
+News App Built with kotlin! (Under Development!!)
