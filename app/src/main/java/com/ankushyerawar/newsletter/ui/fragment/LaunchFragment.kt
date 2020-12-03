@@ -1,6 +1,7 @@
 package com.ankushyerawar.newsletter.ui.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,14 +40,15 @@ class LaunchFragment : Fragment() {
 
         mTextView = view.findViewById(R.id.title_label)
 
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
         //Animate TextView
         mTextView.setCharacterDelay(150)
         mTextView.animateText("News Letter")
+
+        val handler = Handler()
+        handler.postDelayed({
+            Navigation.findNavController(view)
+                .navigate(LaunchFragmentDirections.actionNavigationLaunchToNavigationHeadline())
+        }, 2500)
 
     }
 
