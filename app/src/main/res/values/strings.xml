@@ -12,5 +12,8 @@
     <string name="title_desc_two">Stay connected with the world. \n Know what\'\s happening around you.</string>
     <string name="title_desc_three">Share the latest news, trends and much more\nwith family and friends.</string>
 
+    //Extras
+    <string name="image_desc">Image Description</string>
+
 
 </resources>

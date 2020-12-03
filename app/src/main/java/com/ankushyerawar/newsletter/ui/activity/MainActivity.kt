@@ -6,8 +6,6 @@ import android.view.animation.AnimationSet
 import android.view.animation.OvershootInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -18,18 +16,13 @@ import com.ankushyerawar.newsletter.R
 import com.ankushyerawar.newsletter.ui.dashboard.DashboardFragment
 import com.ankushyerawar.newsletter.ui.fragment.HeadlineFragment
 import com.ankushyerawar.newsletter.ui.notifications.NotificationsFragment
-import com.ankushyerawar.newsletter.utils.BottomNavigationViewIndicator
-import com.ankushyerawar.newsletter.utils.ListenableBottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mNavView: ListenableBottomNavigationView
     private lateinit var mNavHostFragment: Fragment
     private lateinit var mNavController: NavController
-    private lateinit var mMainToolbar: Toolbar
-
-    private lateinit var mRootLayout: ConstraintLayout
-    private lateinit var mIndicatorView: BottomNavigationViewIndicator
 
     private var isAnimated: Boolean = false
 
@@ -37,10 +30,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mNavView = findViewById(R.id.nav_view)
-        mRootLayout = findViewById(R.id.container)
-        mMainToolbar = findViewById(R.id.toolbar)
-        mIndicatorView = findViewById(R.id.indicator_view)
         mNavHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
         mNavController = findNavController(R.id.nav_host_fragment)
 
@@ -49,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     //Back Stack Handling
     override fun onBackPressed() {
-        val currentFragment = mNavHostFragment.childFragmentManager.fragments[0]
+        val currentFragment = nav_host_fragment.childFragmentManager.fragments[0]
 
         //if the current fragment is Home fragment finish the Activity
         if (currentFragment is HeadlineFragment) {
@@ -64,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     //Navigation Set-Up
     private fun setUpNav() {
-        setSupportActionBar(mMainToolbar)
+        setSupportActionBar(toolbar)
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -76,8 +65,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        mMainToolbar.setupWithNavController(mNavController, appBarConfiguration)
-        mNavView.setupWithNavController(mNavController)
+        toolbar.setupWithNavController(mNavController, appBarConfiguration)
+        navView.setupWithNavController(mNavController)
 
         onFragmentToolbarChanged()
     }
@@ -87,17 +76,17 @@ class MainActivity : AppCompatActivity() {
         mNavController.addOnDestinationChangedListener { _, destination, _ ->
 
             when (destination.id) {
-                R.id.navigation_splash -> mMainToolbar.visibility = View.GONE
-                R.id.navigation_launch -> mMainToolbar.visibility = View.GONE
+                R.id.navigation_splash -> toolbar.visibility = View.GONE
+                R.id.navigation_launch -> toolbar.visibility = View.GONE
                 R.id.navigation_headline -> {
-                    mMainToolbar.visibility = View.VISIBLE
+                    toolbar.visibility = View.VISIBLE
                     if (!isAnimated)
-                        animateBottomView(mNavView)
-                    mIndicatorView.setSelectedIndex(0)
+                        animateBottomView(navView)
+                    indicatorView.setSelectedIndex(0)
                 }
-                R.id.navigation_dashboard -> mIndicatorView.setSelectedIndex(1)
-                R.id.navigation_notifications -> mIndicatorView.setSelectedIndex(2)
-                else -> mMainToolbar.visibility = View.VISIBLE
+                R.id.navigation_dashboard -> indicatorView.setSelectedIndex(1)
+                R.id.navigation_notifications -> indicatorView.setSelectedIndex(2)
+                else -> toolbar.visibility = View.VISIBLE
             }
         }
     }
@@ -120,21 +109,21 @@ class MainActivity : AppCompatActivity() {
 
         animation.duration = duration
         animation.interpolator = OvershootInterpolator(interpolatorTension)
-        mIndicatorView.startAnimation(animation)
+        indicatorView.startAnimation(animation)
         view.startAnimation(animation)
 
         //Reset the Constraints on the NavView
         val set = ConstraintSet()
-        set.clone(mRootLayout)
+        set.clone(container)
         set.clear(view.id, ConstraintSet.TOP)
         set.connect(
             view.id,
             ConstraintSet.BOTTOM,
-            mRootLayout.id,
+            container.id,
             ConstraintSet.BOTTOM,
             bottomMargin
         )
-        set.applyTo(mRootLayout)
+        set.applyTo(container)
     }
 
     //Constant Values Used in Activity

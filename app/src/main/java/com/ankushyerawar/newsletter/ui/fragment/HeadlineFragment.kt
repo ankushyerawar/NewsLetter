@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ankushyerawar.newsletter.R
-import com.ankushyerawar.newsletter.ui.adapter.main.HeadlinesAdapter
 import com.ankushyerawar.newsletter.ui.viewmodel.NewsViewModel
+import kotlinx.android.synthetic.main.fragment_headline.*
 
 class HeadlineFragment : Fragment() {
 
@@ -38,6 +38,11 @@ class HeadlineFragment : Fragment() {
         } else {
             Log.e("onActivityCreated","False")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        shimmerFrameLayout.startShimmerAnimation()
     }
 
 }
