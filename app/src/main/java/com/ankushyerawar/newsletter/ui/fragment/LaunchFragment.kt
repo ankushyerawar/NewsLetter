@@ -2,9 +2,7 @@ package com.ankushyerawar.newsletter.ui.fragment
 
 import android.os.Bundle
 import android.os.Handler
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -12,17 +10,9 @@ import com.ankushyerawar.newsletter.R
 import com.ankushyerawar.newsletter.ui.viewmodel.SplashViewModel
 import kotlinx.android.synthetic.main.fragment_launch.*
 
-class LaunchFragment : Fragment() {
+class LaunchFragment : Fragment(R.layout.fragment_launch) {
 
     private val mViewModel: SplashViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_launch, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,16 +27,20 @@ class LaunchFragment : Fragment() {
         mViewModel.showSplashFragment = true
 
         //Animate TextView
-        title_label.setCharacterDelay(150)
+        title_label.setCharacterDelay(CHAR_DELAY)
         title_label.animateText(resources.getString(R.string.app_name))
 
         val handler = Handler()
         handler.postDelayed({
             Navigation.findNavController(view)
                 .navigate(LaunchFragmentDirections.actionNavigationLaunchToNavigationHeadline())
-        }, 2500)
+        }, NAV_DELAY)
 
     }
 
+    companion object{
+        const val CHAR_DELAY: Long = 150
+        const val NAV_DELAY: Long = 2500
+    }
 
 }

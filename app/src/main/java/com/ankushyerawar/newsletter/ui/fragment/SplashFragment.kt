@@ -5,31 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.ankushyerawar.newsletter.R
 import com.ankushyerawar.newsletter.data.model.Splash
-import com.ankushyerawar.newsletter.databinding.FragmentSplashBinding
 import com.ankushyerawar.newsletter.ui.viewmodel.SplashViewModel
+import kotlinx.android.synthetic.main.fragment_splash.*
 
 class SplashFragment : Fragment() {
 
     private val mViewModel: SplashViewModel by viewModels()
-
-    private lateinit var mBinding: FragmentSplashBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
-        mBinding.viewModel = mViewModel
+        val root = inflater.inflate(R.layout.fragment_splash, container, false)
         mViewModel.splashList = createSplashList()
-        mBinding.splash = mViewModel.splashList?.get(mViewModel.showNext)
-        return mBinding.root
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,27 +40,27 @@ class SplashFragment : Fragment() {
     }
 
     private fun setUpViews(view: View) {
-        mBinding.viewFlipper.inAnimation =
+        view_flipper.inAnimation =
             AnimationUtils.loadAnimation(activity, R.anim.slide_in_right)
-        mBinding.viewFlipper.outAnimation =
+        view_flipper.outAnimation =
             AnimationUtils.loadAnimation(activity, R.anim.slide_out_left)
 
-        mBinding.fabNext.setOnClickListener {
+        var listIndex = mViewModel.showNext
 
-            if (mViewModel.showNext < mViewModel.splashList!!.size - 1) {
-                mBinding.viewFlipper.showNext()
+        fab_next.setOnClickListener {
 
-                mViewModel.showNext += 1
-
-                mBinding.splash = mViewModel.splashList?.get(mViewModel.showNext)
-                mBinding.lottieSplash.setAnimation(mBinding.splash!!.resId)
-                mBinding.lottieSplash.playAnimation()
+            if (listIndex < mViewModel.splashList!!.size - 1) {
+                view_flipper.showNext()
+                listIndex += 1
+                lottie_splash.setAnimation(mViewModel.splashList!![listIndex].resId)
+                lottie_splash.playAnimation()
+                txt_header.text = mViewModel.splashList!![listIndex].titleHeader
+                txt_desc.text = mViewModel.splashList!![listIndex].titleDesc
 
             } else {
                 Navigation.findNavController(view)
                     .navigate(SplashFragmentDirections.actionNavigationSplashToNavigationLaunch())
             }
-
         }
     }
 

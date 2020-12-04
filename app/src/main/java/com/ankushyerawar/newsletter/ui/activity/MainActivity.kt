@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         setUpNav()
     }
 
-    //Back Stack Handling
+    //Back Press Handling
     override fun onBackPressed() {
         val currentFragment = nav_host_fragment.childFragmentManager.fragments[0]
 
