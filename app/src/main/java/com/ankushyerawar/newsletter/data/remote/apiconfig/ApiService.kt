@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET(HEADLINE)
-    fun getHeadlineNews(@Query(COUNTRY) country: String, @Query(API_KEY_PARAMETER) apiKey: String): Response<Headlines>
+    suspend fun getHeadlineNews(@Query(COUNTRY) country: String, @Query(API_KEY_PARAMETER) apiKey: String): Response<Headlines>
 
     companion object{
         //Base Url

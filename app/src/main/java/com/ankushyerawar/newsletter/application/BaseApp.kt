@@ -3,7 +3,7 @@ package com.ankushyerawar.newsletter.application
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.ankushyerawar.newsletter.data.NewsRepository
+import com.ankushyerawar.newsletter.data.repository.NewsRepository
 import com.ankushyerawar.newsletter.utils.AppConstants
 import com.ankushyerawar.newsletter.utils.SharedPreferenceHelper
 import com.treebo.internetavailabilitychecker.InternetAvailabilityChecker
@@ -24,10 +24,14 @@ class BaseApp : Application(), InternetConnectivityListener {
     //----------------------------------------------------------------------------------------------
 
     val preferences: SharedPreferences
-    get() {return this.getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE)}
+        get() {
+            return this.getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE)
+        }
 
     val repository: NewsRepository
-    get() {return NewsRepository.getInstance(preferences)}
+        get() {
+            return NewsRepository.getInstance(preferences)
+        }
 
     //----------------------------------------------------------------------------------------------
 
